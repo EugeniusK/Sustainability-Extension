@@ -1,0 +1,18 @@
+
+[tool.poetry]
+name = "sustainability-extension"
+version = "0.0.1"
+description = ""
+authors = ["Eugene Kang, Hugo Lawes, Ayumi Madaschi"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Django = "^4.1.7"
+beautifulsoup4 = "^4.11.2"
+requests = "^2.28.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
