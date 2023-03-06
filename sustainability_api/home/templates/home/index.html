@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html> 
+<html lang="en">
+   <head>
+      <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'>
+      <link rel="icon" type="image/x-icon" href="{% static 'home/DODOICON128-modified.png' %}">
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+      <title>Dodo: Sustainability tracker</title>
+      <style> body { background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(114, 208, 249, 0.995)); height: 100%; margin: 0; background-repeat: no-repeat; background-attachment: fixed; } .center { top:15px; text-align: center; display: block; margin-left: auto; margin-right: auto; position: relative; }.Dodo { opacity: 1; height:15%; display: block; text-align: center; margin-left: auto; margin-right: auto; position: relative; width: 15%; z-index: 2; } </style>
+   </head>
+   <body>
+      <main>
+         <h1 class="center" style="color:darkslategrey; font-size: 200%; font-family:'Varela Round';">Welcome to Dodo!</h1>
+         <div> <img class="Dodo" id="Happy" src="{% static 'home/HappyClear.png' %}" alt="DoDO"> </div>
+         <h2 class="center" style="font-family:'Varela Round'; top:50px"> {{total_co2_added}} kg of CO2 were added to our users' carts </h2>
+         <h2 class="center" style="font-family:'Varela Round'; top:150px" >from {{total_number_added}} unique carts</h2>
+         </h2> 
+      </main>
+   </body>
+</html>

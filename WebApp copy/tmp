@@ -1,0 +1,52 @@
+var productTitle = document.getElementById("productTitle").textContent;
+
+var foundDet = null;
+var prodDet = document.getElementsByClassName("prodDetSectionEntry");
+for (var i = 0; i < prodDet.length; i++) {
+  if (prodDet[i].textContent == " Best Sellers Rank ") {
+    foundDet = prodDet[i];
+  }
+}
+var category = foundDet.nextElementSibling.textContent;
+console.log(productTitle, category);
+
+var price = document
+  .getElementById("corePriceDisplay_desktop_feature_div")
+  .getElementsByClassName("a-offscreen")[0]
+  .textContent.match(/[+-]?\d+(\.\d+)?/g)
+  .join("");
+fetch("http://127.0.0.1:8000/api/search/", {
+  method: "POST",
+  body: JSON.stringify({ main: productTitle + category }),
+  headers: {
+    "Content-type": "application/json; charset=UTF-8",
+  },
+})
+  .then((response) => response.json())
+  .then((json) => addCO2ElementFromHTML(co2e_calculate(json, price)));
+function addCO2ElementFromHTML(co2) {
+  var price_div = document.getElementsByClassName("priceToPay")[0];
+  var div = document.createElement("div");
+  div.innerHTML =
+    '<span class="a-price aok-align-center reinventPricePriceToPayMargin priceToPay" data-a-size="xl" data-a-color="base"><img src="' +
+    browser.runtime.getURL("DODO48.png") +
+    '"><span class="a-price-fraction">' +
+    co2.toString() +
+    "kg</span></span>";
+  price_div.parentElement.appendChild(div.firstChild);
+
+  // Change this to div.childNodes to support multiple top-level nodes.
+  return div.firstChild;
+}
+function co2e_calculate(json, price) {
+  console.log(price, json["co2e_factor"]);
+  console.log(json["co2e_factor"] * parseFloat(price));
+  return json["co2e_factor"] * parseFloat(price);
+}
+
+function addToDB() {
+  var qty = document
+    .getElementById("quantity")
+    .getElementsByClassName("a-dropdown-prompt").textContent;
+  console.log(qty);
+}
